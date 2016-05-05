@@ -54,8 +54,8 @@ Generate.loadGenerators = function loadGenerators() {
 };
 
 Generate.printAvailableGenerators = function printAvailableGenerators() {
-  console.log('Available generators:'.blue);
+  console.log('Available generators:');
   Generate.generators.forEach(function(generator){
-    console.log(' *'.blue, generator);
+    console.log(' *', generator);
   });
 }

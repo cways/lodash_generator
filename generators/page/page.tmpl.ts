@@ -1,5 +1,5 @@
 import {Page, NavController} from 'ionic-angular';
-import {<%=jsClassName%>Service} from '../../services/<%= fileName %>/<%=jsClassName%>Service';
+import {<%=jsClassName%>Service} from './../../services/<%= fileName %>/<%=jsClassName%>';
 /*
   Generated class for the <%= jsClassName %> page.
 
@@ -8,6 +8,7 @@ import {<%=jsClassName%>Service} from '../../services/<%= fileName %>/<%=jsClass
 */
 @Page({
   templateUrl: 'build/<%= directory %>/<%= fileName %>/<%= fileName %>.html',
+  providers:[<%=jsClassName%>Service]
 })
 export class <%= jsClassName %>Page {
   constructor(public nav: NavController,private <%=fileName%>Service:<%=jsClassName%>Service) {
