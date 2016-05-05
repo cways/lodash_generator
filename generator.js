@@ -34,7 +34,7 @@ Generator.prototype.renderTemplates = function renderTemplates() {
   templates.forEach(function(template) {
     var renderedTemplate = this.renderTemplate(template);
     var renderedTemplateDest = path.join(this.appDirectory, 'app', this.directory, this.fileName, this.fileName + template.extension);
-    console.log('√ Create'.blue, path.relative(this.appDirectory, renderedTemplateDest));
+    console.log('√ Create', path.relative(this.appDirectory, renderedTemplateDest));
     fs.writeFileSync(renderedTemplateDest, renderedTemplate);
   }, this);
 }
