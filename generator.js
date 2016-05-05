@@ -19,6 +19,9 @@ function Generator(options) {
 Generator.prototype.run = function(){
   this.makeDirectories();
   this.renderTemplates();
+  if(this.directory=="pages"||this.directory=="services"||this.directory=="tabs"){
+    this.copyTemplates();
+  }
 }
 
 Generator.prototype.makeDirectories = function(){
@@ -37,6 +40,21 @@ Generator.prototype.renderTemplates = function renderTemplates() {
     console.log('√ Create', path.relative(this.appDirectory, renderedTemplateDest));
     fs.writeFileSync(renderedTemplateDest, renderedTemplate);
   }, this);
+}
+
+Generator.prototype.copyTemplates = function copyTemplates(){
+  var templates=[];
+  var generatorPath = path.join(__dirname,'generators','provider');
+  fs.readdirSync(generatorPath)
+    .forEach(function(template) {
+      templates.push({path: path.join(generatorPath, template), extension: path.extname(template),fileName:template});
+    },this);
+    console.log(templates);
+  templates.forEach(function(template){
+    var copyTemplateDest = path.join(this.appDirectory,'app','services',template.fileName);
+    console.log('√ Create',path.relative(this.appDirectory,copyTemplateDest));
+    fs.writeFileSync(copyTemplateDest,fs.readFileSync(template.path, 'utf8'));
+  },this)
 }
 
 Generator.prototype.loadTemplates = function() {

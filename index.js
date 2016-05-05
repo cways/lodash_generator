@@ -2,6 +2,7 @@
 
 var generator = require("./generate");
 
+//用于生成相关文件
 var options={};
 options.appDirectory=process.cwd();
 options.isTS=true;
@@ -10,7 +11,7 @@ options.name = process.argv[3];
 
 
 if(!options.page && !options.name){
-    console.log(options.appDirectory+"/./index.js [generator] [name]");
+    console.log(options.appDirectory+"/scripts/index.js [generator] [name]");
 }else{
     if(options.generator == 'page'||options.generator == 'tabs'){
         try {
